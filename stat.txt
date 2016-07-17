@@ -1,0 +1,24 @@
+
+Bulk Create Documents started
+Time when bulk create started2015-06-24 14:35:41.397918
+Time taken for initial document load 60.0001249313
+Total documents written in first load 190616
+Querying started
+Create Documents started
+Querying started
+Time when create started1435136831.41
+Delete Documents started
+Time when delete started1435136831.41
+Update Documents started
+Time when update started1435136831.42
+Time taken for document deletion 45.420112133
+Total documents after document deletion151843
+Total documents deletion95308
+Time taken for document updating 138.221134901
+Total documents after document updation190622
+Total documents updated95308
+Bulk Create Documents started
+Time when bulk create started2015-06-24 14:53:59.854120
+Time taken for initial document load 60.0001149178
+Time taken for initial document load 2015-06-24 14:54:59.854949
+Total documents written in first load 116284

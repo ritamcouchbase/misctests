@@ -1,0 +1,24 @@
+Here's how I generate certs:
+-------------------------------------
+go run gencert.go -store-to=/Users/artem/Work/cert/newcerts/root -common-name=Root\ Authority
+
+go run gencert.go -store-to=/Users/artem/Work/cert/newcerts/interm -sign-with=/Users/artem/Work/cert/newcerts/root -common-name=Intemediate\ Authority
+
+go run gencert.go -store-to=/Users/artem/Work/cert/newcerts/local -sign-with=/Users/artem/Work/cert/newcerts/interm -common-name=127.0.0.1 -final=true
+
+cat local.crt interm.crt > long_chain.pem
+
+Here's how I apply certs:
+--------------------------------
+
+curl -X GET http://Administrator:asdasd@127.0.0.1:9000/pools/default/certificate
+
+curl -X POST --data-binary "@/Users/artem/Work/cert/newcerts/root.crt" http://Administrator:asdasd@127.0.0.1:9000/controller/uploadClusterCA
+
+mkdir ~/Work/watson/ns_server/data/n_0/inbox
+
+cp /Users/artem/Work/cert/newcerts/long_chain.pem ~/Work/watson/ns_server/data/n_0/inbox/chain.pem
+
+cp /Users/artem/Work/cert/newcerts/local.key ~/Work/watson/ns_server/data/n_0/inbox/pkey.pem
+
+curl -X POST http://Administrator:asdasd@127.0.0.1:9000/node/controller/reloadCertificate
